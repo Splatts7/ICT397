@@ -2,18 +2,21 @@
 * Team Quest's Game Engine
 *
 * Implementation of Main function
-* Jack Matters
+* Jack Matters, Jonathan Sands
 * Version 01 - Started, set up window creation and main loop
 * Date - 13/04/2017
 *
 * Version 02 - Moved window creation to main, and added Draw, Init, and Reshape functions
+* Date - 14/04/2017
+*
+* Version 03 - Added keyInput, keyRelease, mouseMove, and mouseButton functions
 * Date - 14/04/2017
 */
 
 #include <stdio.h>
 #include <iostream>
 #include "GameControl.h"
-#include "gl\glut.h"
+#include "gl/glut.h"
 
 // GameControl object (Controller for MVC model)
 GameControl gameControl;
@@ -31,8 +34,27 @@ void Initialize();
 // Reshape function for when screen size is altered
 void Reshape(int w, int h);
 
-
 using namespace std;
+
+void keyInput(unsigned char key, int xx, int yy)
+{
+	gameControl.KeyboardPress(key, xx, yy);
+}
+
+void keyRelease(unsigned char key, int xx, int yy)
+{
+	gameControl.KeyboardRelease(key, xx, yy);
+}
+
+void mouseMove(int x, int y)
+{
+	gameControl.MouseMovement(x, y);
+}
+
+void mouseButton(int button, int state, int x, int y)
+{
+	gameControl.MouseButton(button, state, x, y);
+}
 
 int main(int argc, char** argv)
 {
@@ -52,9 +74,10 @@ int main(int argc, char** argv)
 	glutDisplayFunc(Display); 
 	glutIdleFunc(Display);	
 
-	//glutKeyboardFunc(keyboardInput);        /* key pressed */
-	//glutKeyboardUpFunc(keyboardRelease);    /* key released */
-	//glutPassiveMotionFunc(mouseMovement);   /* camera look at position */
+	glutKeyboardFunc(keyInput);        /* key pressed */
+	glutKeyboardUpFunc(keyRelease);    /* key released */
+	glutMouseFunc(mouseButton);		   /* mouse button pressed */
+	glutPassiveMotionFunc(mouseMove);  /* camera look at position */
 
 	glutMainLoop();
 

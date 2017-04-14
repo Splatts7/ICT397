@@ -1,6 +1,6 @@
 /*
 * Implementation of GameControl.h file
-* Author - Jack Matters
+* Author - Jack Matters, Jonathan Sands
 */
 
 #include "GameControl.h"
@@ -35,4 +35,28 @@ void GameControl::Draw()
 {
 	//gameWorld.Draw();
 	gameWorld.Prepare();
+}
+
+// Call the pressKeys function in the Input Engine
+void GameControl::KeyboardPress(unsigned char key, int xx, int yy)
+{
+	input.pressKeys(key, xx, yy);
+}
+
+// Call the releaseKeys function in the Input Engine
+void GameControl::KeyboardRelease(unsigned char key, int xx, int yy)
+{
+	input.releaseKeys(key, xx, yy);
+}
+
+// Call the moveMouse function in the Input Engine
+void GameControl::MouseMovement(int x, int y)
+{
+	input.moveMouse(x, y);
+}
+
+// Call the pressMouseButton function in the Input Engine
+void GameControl::MouseButton(int button, int state, int x, int y)
+{
+	input.pressMouseButton(button, state, x, y);
 }
