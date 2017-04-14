@@ -2,13 +2,16 @@
 * @class GameWorld
 * @brief Game World Engine
 * @author Jack Matters
-* @version 01 Started - Layout taken from lecture slides
+* @version 01 - Started, layout taken from lecture slides
 * @date 31/03/2017
 *
-* @version 02 Small modifications
+* @version 02 - Small modifications
 * @date 01/04/2017 
 * @note Most of these functions will call functions from other classes/engines (unless I am mistaken),
 *		so I have left the initializations in the .cpp file blank but ready to be used
+*
+* @version 03 - Added functions to return screen height and width
+* @date 14/04/2017
 */
 
 #ifndef GAMEWORLD_H
@@ -16,10 +19,11 @@
 
 //#include "Audio.h"
 //#include "Animation.h"
-//#include "Graphics.h"
+#include "GraphicsEngine.h"
 //#include "AI.h"
 //#include "Input.h"
 //#include "Physics.h"
+#include "lua.hpp"
 
 class GameWorld
 {
@@ -35,6 +39,12 @@ class GameWorld
 
 		/// Variable for determining if game is done (true) or not (false)
 		bool gameDone;
+
+		/// GraphicsEngine object
+		GraphicsEngine graphicsEngine;
+
+		/// Lua state
+		lua_State* L;
 
 	protected:
 
@@ -72,6 +82,18 @@ class GameWorld
 		* @brief De-constructor
 		*/
 		~GameWorld();
+
+		/**
+		* @brief Returns the screen width
+		* @return screenWidth
+		*/
+		int GetScreenW();
+
+		/**
+		* @brief Returns the screen height
+		* @return screenHeight
+		*/
+		int GetScreenH();
 
 		/**
 		* @brief Initialize terrain, load all objects, and put in container
@@ -117,7 +139,7 @@ class GameWorld
 		* @param width - Width of screen
 		* @param height - Height of screen
 		*/
-		void SetScreen(int width, int height);
+		void SetScreen();
 
 		/**
 		* @brief Determine if game is done/quit by player
