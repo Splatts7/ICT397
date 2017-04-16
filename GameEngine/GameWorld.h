@@ -21,7 +21,7 @@
 //#include "Animation.h"
 #include "GraphicsEngine.h"
 //#include "AI.h"
-//#include "Input.h"
+#include "Input.h"
 //#include "Physics.h"
 #include "lua.hpp"
 
