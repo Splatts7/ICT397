@@ -1,6 +1,6 @@
 /*
 * Implementation of GameWorld.h file
-* Author - Jack Matters
+* Author - Jack Matters, Jonathan Sands
 */
 
 #include "GameWorld.h"
