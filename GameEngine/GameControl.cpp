@@ -37,6 +37,18 @@ void GameControl::Draw()
 	gameWorld.Prepare();
 }
 
+// Call CreateCam function in GameWorld Engine
+void GameControl::CreateCam()
+{
+	gameWorld.CreateCam();
+}
+
+// Call GetCam function in GameWorld Engine
+Vec3 GameControl::GetCam(int choice)
+{
+	return gameWorld.GetCam(choice);
+}
+
 // Call the pressKeys function in the Input Engine
 void GameControl::KeyboardPress(unsigned char key, int xx, int yy)
 {
