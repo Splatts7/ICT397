@@ -10,6 +10,9 @@
 *
 * @version 03 - Added functions to return input read from keyboard and mouse from Input Engine
 * @date - 14/04/2017
+*
+* @version 04 - Added functions for camera creation and returning of camera values
+* @date - 18/04/2017
 */
 
 #ifndef GAMECONTROL_H
@@ -55,22 +58,45 @@ class GameControl
 		void Draw();
 
 		/**
+		* @brief Calls CreateCam function in GameWorld Engine
+		*/
+		void CreateCam();
+
+		/**
+		* @brief Calls CreateCam function in GameWorld Engine
+		* @param choice - Which camera Vec3 to return
+		*/
+		Vec3 GetCam(int choice);
+
+		/**
 		* @brief Calls pressKeys function in Input Engine
+		* @param key - Key pressed
+		* @param xx - The mouse x-coordinate in window relative coordinates
+		* @param yy - The mouse y-coordinate in window relative coordinates
 		*/
 		void KeyboardPress(unsigned char key, int xx, int yy);
 
 		/**
 		* @brief Calls releaseKeys function in Input Engine
+		* @param key - Key released
+		* @param xx - The mouse x-coordinate in window relative coordinates
+		* @param yy - The mouse y-coordinate in window relative coordinates
 		*/
 		void KeyboardRelease(unsigned char key, int xx, int yy);
 
 		/**
 		* @brief Calls moveMouse function in Input Engine
+		* @param x - The mouse x-coordinate in window relative coordinates
+		* @param y - The mouse y-coordinate in window relative coordinates
 		*/
 		void MouseMovement(int x, int y);
 
 		/**
 		* @brief Calls pressMouseButton function in Input Engine
+		* @param button - Mouse button pressed
+		* @param state - State of mouse button (up or down)
+		* @param x - The mouse x-coordinate in window relative coordinates
+		* @param y - The mouse y-coordinate in window relative coordinates
 		*/
 		void MouseButton(int button, int state, int x, int y);
 
@@ -78,6 +104,7 @@ class GameControl
 
 		/// GameWorld object
 		GameWorld gameWorld;
+
 		/// Input object
 		Input input;
 

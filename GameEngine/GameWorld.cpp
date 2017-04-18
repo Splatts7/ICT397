@@ -1,9 +1,10 @@
 /*
 * Implementation of GameWorld.h file
-* Author - Jack Matters, Jonathan Sands
+* Author - Jack Matters
 */
 
 #include "GameWorld.h"
+#include "Camera.h"
 //#include <iostream>
 
 // Default constructor
@@ -14,6 +15,8 @@ GameWorld::GameWorld()
 	screenHeight = 100;
 	gameDone = false;
 	// Other initialisations
+
+	cam = new Camera();
 
 	// Lua initializations (might need to put this in every function that reads a script instead of having only one state?)
 	L = lua_open();
@@ -147,7 +150,7 @@ void GameWorld::SetScreen()
 	// Load standard lua library functions
 	//luaL_openlibs(L);
 	// Load and run script
-	if (luaL_dofile(L, "../Scripts/GameWindow.lua"))
+	if (luaL_dofile(L, "Scripts/GameWindow.lua"))
 	{
 		//std::cout << "Error opening file.." << std::endl;
 		getchar();
@@ -166,6 +169,68 @@ void GameWorld::SetScreen()
 	screenHeight = lua_tonumber(L,2);
 	
 	// Close lua state? Or can it stay open until program ends/ all scripts read?
+}
+
+// Creates the game camera object
+// Note - Not sure if able to have one instance of lua state for each script, or if each script requires its own state
+//		  Therefore, commented code may still be required here. Also not too sure how to go about error checking as
+//		  adding in #include <iostream> causes errors
+void GameWorld::CreateCam()
+{
+	// Make camera object
+	cam = GAF.Create("CAMERA");
+	Vec3 temp;
+
+	// Read in starting camera values from script
+	if (luaL_dofile(L, "Scripts/Camera.lua"))
+	{
+		//std::cout << "Error opening file.." << std::endl;
+		getchar();
+		//return 1;
+	}
+
+	// Read from script
+	lua_settop(L,0);
+	lua_getglobal(L,"camx");
+	lua_getglobal(L,"camy");
+	lua_getglobal(L,"camz");
+	lua_getglobal(L,"lookx");
+	lua_getglobal(L,"looky");
+	lua_getglobal(L,"lookz");
+	lua_getglobal(L,"upx");
+	lua_getglobal(L,"upy");
+	lua_getglobal(L,"upz");
+
+	// Set cam position
+	temp.x = lua_tonumber(L,1);
+	temp.y = lua_tonumber(L,2);
+	temp.z = lua_tonumber(L,3);
+	cam->Set(1, temp);
+
+	// Set cam lookat
+	temp.x = lua_tonumber(L,4);
+	temp.y = lua_tonumber(L,5);
+	temp.z = lua_tonumber(L,6);
+	cam->Set(2, temp);
+
+	// Set cam upvec
+	temp.x = lua_tonumber(L,7);
+	temp.y = lua_tonumber(L,8);
+	temp.z = lua_tonumber(L,9);
+	cam->Set(3, temp);
+
+	// Close lua state? Or can it stay open until program ends/ all scripts read?
+}
+
+// Returns the Vec3 values for the camera object, depending on choice input
+Vec3 GameWorld:: GetCam(int choice)
+{
+	if(choice == 1)
+		return cam->Get(1);
+	if(choice == 2)
+		return cam->Get(2);
+	if(choice == 3)
+		return cam->Get(3);
 }
 
 // Determine if game is done

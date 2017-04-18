@@ -2,7 +2,7 @@
 * Team Quest's Game Engine
 *
 * Implementation of Main function
-* Jack Matters, Jonathan Sands
+* Author - Jack Matters, Jonathan Sands
 * Version 01 - Started, set up window creation and main loop
 * Date - 13/04/2017
 *
@@ -11,11 +11,15 @@
 *
 * Version 03 - Added keyInput, keyRelease, mouseMove, and mouseButton functions
 * Date - 14/04/2017
+*
+* @version 04 - Altered initialize function to set starting gluLookAt to data read from script
+* Date - 18/04/2017
 */
 
 #include <stdio.h>
 #include <iostream>
 #include "GameControl.h"
+#include "GameAssetFactory.h"
 #include "gl/glut.h"
 
 // GameControl object (Controller for MVC model)
@@ -34,27 +38,21 @@ void Initialize();
 // Reshape function for when screen size is altered
 void Reshape(int w, int h);
 
+// Handle input via keyboard when button pressed
+void keyInput(unsigned char key, int xx, int yy);
+
+// Handle input via keyboard when button released
+void keyRelease(unsigned char key, int xx, int yy);
+
+// Handle input via mouse when moved
+void mouseMove(int x, int y);
+
+// Handle input via mouse when button pressed
+void mouseButton(int button, int state, int x, int y);
+
+
 using namespace std;
 
-void keyInput(unsigned char key, int xx, int yy)
-{
-	gameControl.KeyboardPress(key, xx, yy);
-}
-
-void keyRelease(unsigned char key, int xx, int yy)
-{
-	gameControl.KeyboardRelease(key, xx, yy);
-}
-
-void mouseMove(int x, int y)
-{
-	gameControl.MouseMovement(x, y);
-}
-
-void mouseButton(int button, int state, int x, int y)
-{
-	gameControl.MouseButton(button, state, x, y);
-}
 
 int main(int argc, char** argv)
 {
@@ -74,10 +72,10 @@ int main(int argc, char** argv)
 	glutDisplayFunc(Display); 
 	glutIdleFunc(Display);	
 
-	glutKeyboardFunc(keyInput);        /* key pressed */
-	glutKeyboardUpFunc(keyRelease);    /* key released */
-	glutMouseFunc(mouseButton);		   /* mouse button pressed */
-	glutPassiveMotionFunc(mouseMove);  /* camera look at position */
+	glutKeyboardFunc(keyInput);      
+	glutKeyboardUpFunc(keyRelease);  
+	glutMouseFunc(mouseButton);		   
+	glutPassiveMotionFunc(mouseMove); 
 
 	glutMainLoop();
 
@@ -98,10 +96,16 @@ void Initialize()
 	// White background
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 
-	// set perpsective
-	gluLookAt(0.0, 1.75, 0.0,
-		0.0, 1.75, -1,
-		0.0f,1.0f,0.0f);
+	// Create camera object
+	gameControl.CreateCam();
+	Vec3 pos = gameControl.GetCam(1);
+	Vec3 look = gameControl.GetCam(2);
+	Vec3 up = gameControl.GetCam(3);
+
+	// Set view perspective
+	gluLookAt(pos.x, pos.y, pos.z,
+		look.x, look.y, look.z,
+		up.x, up.y, up.z);
 
 	// Other initializations
 }
@@ -122,4 +126,28 @@ void Reshape(int w, int h)
 	glViewport(0, 0, w, h);
 	gluPerspective(45,ratio,1,250000);
 	glMatrixMode(GL_MODELVIEW);
+}
+
+// Handle input via keyboard when button pressed
+void keyInput(unsigned char key, int xx, int yy)
+{
+	gameControl.KeyboardPress(key, xx, yy);
+}
+
+// Handle input via keyboard when button released
+void keyRelease(unsigned char key, int xx, int yy)
+{
+	gameControl.KeyboardRelease(key, xx, yy);
+}
+
+// Handle input via mouse when moved
+void mouseMove(int x, int y)
+{
+	gameControl.MouseMovement(x, y);
+}
+
+// Handle input via mouse when button pressed
+void mouseButton(int button, int state, int x, int y)
+{
+	gameControl.MouseButton(button, state, x, y);
 }

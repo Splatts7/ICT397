@@ -4,8 +4,6 @@
 */
 
 #include "Input.h"
-#include "gl/glut.h"
-#include <math.h>
 
 // Default constructor
 Input::Input(){};

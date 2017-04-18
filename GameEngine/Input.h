@@ -10,9 +10,13 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include "gl/glut.h"
+#include <math.h>
+
 class Input
 {
 	public:
+
 		/**
 		* @brief Default constructor
 		*/
@@ -25,41 +29,53 @@ class Input
 
 		/**
 		* @brief Responds to keyboard key input
+		* @param key - Key pressed
+		* @param xx - The mouse x-coordinate in window relative coordinates
+		* @param yy - The mouse y-coordinate in window relative coordinates
 		*/
-		void Input::pressKeys(unsigned char key, int xx, int yy);
+		void pressKeys(unsigned char key, int xx, int yy);
 
 		/**
 		* @brief Responds to keyboard key being released
+		* @param key - Key pressed
+		* @param xx - The mouse x-coordinate in window relative coordinates
+		* @param yy - The mouse y-coordinate in window relative coordinates
 		*/
-		void Input::releaseKeys(unsigned char key, int xx, int yy);
+		void releaseKeys(unsigned char key, int xx, int yy);
 
 		/**
 		* @brief Responds to mouse movement input
+		* @param x - The mouse x-coordinate in window relative coordinates
+		* @param y - The mouse y-coordinate in window relative coordinates
 		*/
-		void Input::moveMouse(int x, int y);
+		void moveMouse(int x, int y);
 
 		/**
 		* @brief Responds to mouse button input
+		* @param button - Mouse button pressed
+		* @param state - State of mouse button (up or down)
+		* @param x - The mouse x-coordinate in window relative coordinates
+		* @param y - The mouse y-coordinate in window relative coordinates
 		*/
-		void Input::pressMouseButton(int button, int state, int x, int y);
+		void pressMouseButton(int button, int state, int x, int y);
 
 	private:
-		// Angle of rotation for the camera direction
+
+		/// Angle of rotation for the camera direction
 		float cameraAngle;
 
-		// Actual vector representing the camera's direction
+		/// Actual vector representing the camera's direction
 		float cameraLX, cameraLZ;
 
 		// XZ position of the camera
 		float cameraX, cameraZ;
 
-		// The key states. These variables will be zero
-		// when no key is being presses
+		/// The key states. These variables will be zero when no key is being presses
 		float deltaAngle;
 		float deltaMove;
 		int xOrigin;
 
-		// Boolean values to check for different modes
+		/// Boolean values to check for different modes
 		bool displayManual;
 		bool displayWireframe;
 		bool displayExit;

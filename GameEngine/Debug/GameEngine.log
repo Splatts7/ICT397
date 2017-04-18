@@ -1,11 +1,23 @@
-﻿Build started 14/04/2017 9:11:21 PM.
+﻿Build started 18/04/2017 7:49:01 PM.
      1>Project "C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\Dependencies\Includes & DLLs\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\Dependencies\Includes & DLLs\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp GameAssetFactory.cpp GameControl.cpp GameWorld.cpp Main.cpp
          Main.cpp
+         GameWorld.cpp
+         GameControl.cpp
+         GameAssetFactory.cpp
+         Camera.cpp
+         Generating Code...
+     1>c:\users\new\documents\games_technology\year3_semester1\ict397\~my work\assignment1\gameengine\gameengine\camera.cpp(41): warning C4715: 'Camera::Get' : not all control paths return a value
+     1>c:\users\new\documents\games_technology\year3_semester1\ict397\~my work\assignment1\gameengine\gameengine\gameassetfactory.cpp(22): warning C4715: 'GameAssetFactory::Create' : not all control paths return a value
+     1>c:\users\new\documents\games_technology\year3_semester1\ict397\~my work\assignment1\gameengine\gameengine\gameworld.cpp(234): warning C4715: 'GameWorld::GetCam' : not all control paths return a value
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" lua5.1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.lib" /MACHINE:X86 Debug\GameControl.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" lua5.1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.lib" /MACHINE:X86 Debug\Camera.obj
+         Debug\GameAssetFactory.obj
+         Debug\GameControl.obj
+         Debug\GameObject.obj
          Debug\GraphicsEngine.obj
+         Debug\Input.obj
          Debug\Main.obj
          Debug\GameWorld.obj
          GameEngine.vcxproj -> C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe
@@ -13,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.64
+Time Elapsed 00:00:02.13
