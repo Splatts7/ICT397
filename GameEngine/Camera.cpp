@@ -23,11 +23,8 @@ void Camera::Render()
 	Camera cam = Camera();
 }
 
-// Move the camera via input from keyboard/mouse
-void Camera::Move()
-{
-	position.z = 5;
-}
+// Don't need this (movement done through Input Engine
+void Camera::Move(){}
 
 // Return the chosen camera Vec3 data
 Vec3 Camera::Get(int choice)

@@ -19,11 +19,15 @@
 #include <stdio.h>
 #include <iostream>
 #include "GameControl.h"
-#include "GameAssetFactory.h"
+#include "Input.h"
+#include "AudioEngine.h"
 #include "gl/glut.h"
 
 // GameControl object (Controller for MVC model)
 GameControl gameControl;
+
+// Input object
+Input input;
 
 // Variables to hold screen width and height
 int screenW, screenH;
@@ -60,6 +64,11 @@ int main(int argc, char** argv)
 	gameControl.SetScreen();
 	screenW = gameControl.GetScreenW();
 	screenH = gameControl.GetScreenH();
+
+	// Audio engine testing
+	//AudioEngine audio;
+	//audio.LoadMedia();
+	//audio.PlaySound();
 
 	// Create game window, initialize all objects/variables, and enter main game loop
 	glutInit(&argc, argv);
@@ -131,23 +140,23 @@ void Reshape(int w, int h)
 // Handle input via keyboard when button pressed
 void keyInput(unsigned char key, int xx, int yy)
 {
-	gameControl.KeyboardPress(key, xx, yy);
+	input.pressKeys(key, xx, yy);
 }
 
 // Handle input via keyboard when button released
 void keyRelease(unsigned char key, int xx, int yy)
 {
-	gameControl.KeyboardRelease(key, xx, yy);
+	input.releaseKeys(key, xx, yy);
 }
 
 // Handle input via mouse when moved
 void mouseMove(int x, int y)
 {
-	gameControl.MouseMovement(x, y);
+	input.moveMouse(x, y);
 }
 
 // Handle input via mouse when button pressed
 void mouseButton(int button, int state, int x, int y)
 {
-	gameControl.MouseButton(button, state, x, y);
+	input.pressMouseButton(button, state, x, y);
 }

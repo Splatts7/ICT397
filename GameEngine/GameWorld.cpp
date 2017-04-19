@@ -16,7 +16,11 @@ GameWorld::GameWorld()
 	gameDone = false;
 	// Other initialisations
 
+	// Initialize camera variables
 	cam = new Camera();
+	pos = Vec3();
+	look = Vec3();
+	up = Vec3();
 
 	// Lua initializations (might need to put this in every function that reads a script instead of having only one state?)
 	L = lua_open();
@@ -89,6 +93,18 @@ void GameWorld::Prepare()
 void GameWorld::OnPrepare()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// Get current cam data
+	pos = GetCam(1);
+	look = GetCam(2);
+	up = GetCam(3);
+
+	// Set view perspective
+	glLoadIdentity();
+	gluLookAt(pos.x, pos.y, pos.z,
+		look.x, look.y, look.z,
+		up.x, up.y, up.z);
+
 
     //Front wall
     glBegin(GL_POLYGON);
@@ -231,6 +247,17 @@ Vec3 GameWorld:: GetCam(int choice)
 		return cam->Get(2);
 	if(choice == 3)
 		return cam->Get(3);
+}
+
+// Sets the Vec3 values for the camera object, depending on choice input
+void GameWorld::SetCam(int choice, Vec3 vec)
+{
+	if(choice == 1)
+		cam->Set(choice, vec);
+	if(choice == 2)
+		cam->Set(choice, vec);
+	if(choice == 3)
+		cam->Set(choice, vec);
 }
 
 // Determine if game is done
