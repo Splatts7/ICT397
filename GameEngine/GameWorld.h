@@ -20,11 +20,11 @@
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
-//#include "Audio.h"
+#include "AudioEngine.h"
 //#include "Animation.h"
 #include "GraphicsEngine.h"
 //#include "AI.h"
-#include "Input.h"
+//#include "Input.h"
 //#include "Physics.h"
 #include "Camera.h"
 #include "GameAssetFactory.h"
@@ -51,8 +51,17 @@ class GameWorld
 		/// GameAssetFactory object
 		GameAssetFactory GAF;
 
-		// Camera object
+		/// Camera object
 		GameObject* cam;
+
+		/// Camera position
+		Vec3 pos;
+
+		/// Camera lookat
+		Vec3 look;
+
+		/// Camera up vec
+		Vec3 up;
 
 		/// Lua state
 		lua_State* L;
@@ -158,8 +167,16 @@ class GameWorld
 		/**
 		* @brief Returns Vec3 values of the camera, depending on choice input
 		* @param choice - Vec3 to return
+		* @return Vec3 - Chosen camera Vec3 data
 		*/
 		Vec3 GetCam(int choice);
+
+		/**
+		* @brief Sets Vec3 values of the camera, depending on choice input
+		* @param choice - Vec3 to return
+		* @param vec - Vec3 data to copy from
+		*/
+		void SetCam(int choice, Vec3 vec);
 
 		/**
 		* @brief Determine if game is done/quit by player

@@ -1,17 +1,21 @@
 /**
 * @class Input
 * @brief Input class that handles user input
-* @author Jonathan Sands
+* @author Jonathan Sands, Jack Matters
 * @version 01 Started
 * @date 14/04/2017
 *
+* @version 02 Added in code to allow current camera data to be read in, altered, and set to the new values (just example code, Jonathan will do the rest)
+* @date 19/04/2017
 */
 
 #ifndef INPUT_H
 #define INPUT_H
 
+#include <stdlib.h>
 #include "gl/glut.h"
 #include <math.h>
+#include "GameControl.h"
 
 class Input
 {
@@ -79,6 +83,9 @@ class Input
 		bool displayManual;
 		bool displayWireframe;
 		bool displayExit;
+
+		/// Camera position and lookat
+		Vec3 pos, look;
 };
 
 #endif

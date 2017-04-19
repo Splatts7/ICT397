@@ -28,7 +28,7 @@ class GameObject
 		/**
 		* @brief Virtual render function
 		*/
-		virtual void Render() = 0;
+		virtual void Render();
 
 		/**
 		* @brief Virtual render function

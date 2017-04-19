@@ -17,19 +17,48 @@ void computePos(float deltaMove)
 	cameraZ += deltaMove * cameraLZ * 0.1f;
 }
 */
+
 // Responds to keyboard key input
 void Input::pressKeys(unsigned char key, int xx, int yy)
 { 	
+
+	// NOTE: This must be declared in a function in this .cpp file
+	//		 Declare it in whichever function/s you use to get and set camera Vec3s
+	extern GameControl gameControl;
+
+
         switch (key) {
 			case 'w':
 			case 'W':
 				// Move forward
 				deltaMove = 0.5f;
+
+				// Example of getting current camera data, altering it, and setting it
+				// This can be put into other functions, it is just here for testing purposes
+				pos = gameControl.GetCam(1);
+				look = gameControl.GetCam(2);
+				pos.z -= 5;
+				look.z -= 5;
+				gameControl.SetCam(1, pos);
+				gameControl.SetCam(2, look);
+
+
 				break;
 			case 's':
 			case 'S':
 				// Move backward
 				deltaMove = -0.5f;
+
+				// Example of getting current camera data, altering it, and setting it
+				// This can be put into other functions, it is just here for testing purposes
+				pos = gameControl.GetCam(1);
+				look = gameControl.GetCam(2);
+				pos.z += 5;
+				look.z += 5;
+				gameControl.SetCam(1, pos);
+				gameControl.SetCam(2, look);
+
+
 				break;
 			case 'a':
 			case 'A':
