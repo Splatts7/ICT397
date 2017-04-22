@@ -5,6 +5,7 @@
 
 #include "GameWorld.h"
 #include "Camera.h"
+#include "Input.h"
 //#include <iostream>
 
 // Default constructor
@@ -94,17 +95,8 @@ void GameWorld::OnPrepare()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// Get current cam data
-	pos = GetCam(1);
-	look = GetCam(2);
-	up = GetCam(3);
-
-	// Set view perspective
-	glLoadIdentity();
-	gluLookAt(pos.x, pos.y, pos.z,
-		look.x, look.y, look.z,
-		up.x, up.y, up.z);
-
+	extern Input input;
+	input.MoveCamera();
 
     //Front wall
     glBegin(GL_POLYGON);

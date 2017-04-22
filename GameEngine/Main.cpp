@@ -78,13 +78,14 @@ int main(int argc, char** argv)
 	glutCreateWindow("Graphics Engine");
 	glutReshapeFunc(Reshape);
 	Initialize();
-	glutDisplayFunc(Display); 
-	glutIdleFunc(Display);	
 
-	glutKeyboardFunc(keyInput);      
 	glutKeyboardUpFunc(keyRelease);  
+	glutKeyboardFunc(keyInput);      	
 	glutMouseFunc(mouseButton);		   
 	glutPassiveMotionFunc(mouseMove); 
+
+	glutDisplayFunc(Display); 
+	glutIdleFunc(Display);	
 
 	glutMainLoop();
 
@@ -110,6 +111,9 @@ void Initialize()
 	Vec3 pos = gameControl.GetCam(1);
 	Vec3 look = gameControl.GetCam(2);
 	Vec3 up = gameControl.GetCam(3);
+
+	// Center cursor
+	glutWarpPointer(screenH/2, screenW/2);
 
 	// Set view perspective
 	gluLookAt(pos.x, pos.y, pos.z,
