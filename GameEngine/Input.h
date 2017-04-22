@@ -7,14 +7,20 @@
 *
 * @version 02 Added in code to allow current camera data to be read in, altered, and set to the new values (just example code, Jonathan will do the rest)
 * @date 19/04/2017
+*
+* @version 03 Jack took over while Jonathan works on other sections. Added and altered code from previous units to allow camera rotation via mouse and 
+*			  movement via keyboard
+* @date 22/04/2017
 */
 
 #ifndef INPUT_H
 #define INPUT_H
 
 #include <stdlib.h>
+#include <cmath>
+#include <iostream>
 #include "gl/glut.h"
-#include <math.h>
+#include "lua.hpp"
 #include "GameControl.h"
 
 class Input
@@ -48,7 +54,7 @@ class Input
 		void releaseKeys(unsigned char key, int xx, int yy);
 
 		/**
-		* @brief Responds to mouse movement input
+		* @brief Moves the camera according to user input via mouse
 		* @param x - The mouse x-coordinate in window relative coordinates
 		* @param y - The mouse y-coordinate in window relative coordinates
 		*/
@@ -63,29 +69,62 @@ class Input
 		*/
 		void pressMouseButton(int button, int state, int x, int y);
 
+		/**
+		* @brief Moves the camera according to user input via keyboard
+		*/
+		void MoveCamera();
+
 	private:
 
-		/// Angle of rotation for the camera direction
-		float cameraAngle;
-
-		/// Actual vector representing the camera's direction
-		float cameraLX, cameraLZ;
-
-		// XZ position of the camera
-		float cameraX, cameraZ;
-
-		/// The key states. These variables will be zero when no key is being presses
-		float deltaAngle;
-		float deltaMove;
-		int xOrigin;
-
-		/// Boolean values to check for different modes
+		/// Flag to display game manual
 		bool displayManual;
+
+		/// Flag to display wire frames
 		bool displayWireframe;
+
+		/// Flag to display exit splash screen
 		bool displayExit;
 
-		/// Camera position and lookat
-		Vec3 pos, look;
+		/// Camera position
+		Vec3 pos;
+
+		/// Camera rotation
+		Vec3 rotation;
+		
+		/// Camera angle
+		Vec3 deltaAngle;
+
+		/// Camera rotation speed
+		float rotSpeed;
+
+		/// Camera move speed
+		float moveSpeed;
+
+		/// Rotation around y-axis in radians
+		float radRotY;
+
+		/// Forward(1) and backward(2) movement
+		int move;
+
+		/// Left(1) and right(2) strafe
+		int strafe;
+
+		/**
+		* @brief Translates the camera's position and rotation angle
+		*/
+		void TranslateCam();
+
+		/**
+		* @brief Moves camera forward and back
+		* @param direction - 1 for forward, 2 for backward
+		*/
+		void ComputeCamFB(int direction);
+
+		/**
+		* @brief Strafes the camera left and right
+		* @param direction - 1 for left, 2 for right
+		*/
+		void ComputeCamLR(int direction);
 };
 
 #endif
