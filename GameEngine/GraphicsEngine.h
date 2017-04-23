@@ -10,6 +10,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
+#include <stdlib.h>
 #include "gl/glut.h"
 
 class GraphicsEngine

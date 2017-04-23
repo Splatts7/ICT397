@@ -37,26 +37,20 @@ void GameControl::Draw()
 	gameWorld.Prepare();
 }
 
-// Call the pressKeys function in the Input Engine
-void GameControl::KeyboardPress(unsigned char key, int xx, int yy)
+// Call CreateCam function in GameWorld Engine
+void GameControl::CreateCam()
 {
-	input.pressKeys(key, xx, yy);
+	gameWorld.CreateCam();
 }
 
-// Call the releaseKeys function in the Input Engine
-void GameControl::KeyboardRelease(unsigned char key, int xx, int yy)
+// Call GetCam function in GameWorld Engine
+Vec3 GameControl::GetCam(int choice)
 {
-	input.releaseKeys(key, xx, yy);
+	return gameWorld.GetCam(choice);
 }
 
-// Call the moveMouse function in the Input Engine
-void GameControl::MouseMovement(int x, int y)
+// Call SetCam function in GameWorld Engine
+void GameControl::SetCam(int choice, Vec3 vec)
 {
-	input.moveMouse(x, y);
-}
-
-// Call the pressMouseButton function in the Input Engine
-void GameControl::MouseButton(int button, int state, int x, int y)
-{
-	input.pressMouseButton(button, state, x, y);
+	gameWorld.SetCam(choice, vec);
 }

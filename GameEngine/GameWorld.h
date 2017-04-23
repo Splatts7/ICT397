@@ -12,17 +12,22 @@
 *
 * @version 03 - Added functions to return screen height and width
 * @date 14/04/2017
+*
+* @version 04 - Added functions to create camera object, reading data from script
+* @date 18/04/2017
 */
 
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
-//#include "Audio.h"
+#include "AudioEngine.h"
 //#include "Animation.h"
 #include "GraphicsEngine.h"
 //#include "AI.h"
-#include "Input.h"
+//#include "Input.h"
 //#include "Physics.h"
+#include "Camera.h"
+#include "GameAssetFactory.h"
 #include "lua.hpp"
 
 class GameWorld
@@ -42,6 +47,21 @@ class GameWorld
 
 		/// GraphicsEngine object
 		GraphicsEngine graphicsEngine;
+
+		/// GameAssetFactory object
+		GameAssetFactory GAF;
+
+		/// Camera object
+		GameObject* cam;
+
+		/// Camera position
+		Vec3 pos;
+
+		/// Camera lookat
+		Vec3 look;
+
+		/// Camera up vec
+		Vec3 up;
 
 		/// Lua state
 		lua_State* L;
@@ -66,7 +86,7 @@ class GameWorld
 		void OnPrepare();
 
 	public:
-
+		
 		/**
 		* @brief Default constructor
 		*/
@@ -76,7 +96,7 @@ class GameWorld
 		* @brief Non-default constructor
 		* @param c - Camera object
 		*/
-		//GameWorld(Camera *c);
+		//GameWorld(Camera *camera);
 
 		/**
 		* @brief De-constructor
@@ -135,11 +155,28 @@ class GameWorld
 		void FadeScreen();
 
 		/**
-		* @brief Sets the screen size
-		* @param width - Width of screen
-		* @param height - Height of screen
+		* @brief Sets the screen size, reading data from script
 		*/
 		void SetScreen();
+
+		/**
+		* @brief Creates the camera object, reading data from script
+		*/
+		void CreateCam();
+
+		/**
+		* @brief Returns Vec3 values of the camera, depending on choice input
+		* @param choice - Vec3 to return
+		* @return Vec3 - Chosen camera Vec3 data
+		*/
+		Vec3 GetCam(int choice);
+
+		/**
+		* @brief Sets Vec3 values of the camera, depending on choice input
+		* @param choice - Vec3 to return
+		* @param vec - Vec3 data to copy from
+		*/
+		void SetCam(int choice, Vec3 vec);
 
 		/**
 		* @brief Determine if game is done/quit by player
@@ -160,9 +197,6 @@ class GameWorld
 
 		/// Terrain object
 		//Terrain *terrain;
-
-		/// Camera object
-		//Camera *camera;
 
 		/// Player object (don't think we need, player will be camera)
 		//Player *player;

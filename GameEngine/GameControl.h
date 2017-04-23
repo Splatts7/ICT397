@@ -10,13 +10,15 @@
 *
 * @version 03 - Added functions to return input read from keyboard and mouse from Input Engine
 * @date - 14/04/2017
+*
+* @version 04 - Added functions for camera creation and returning of camera values
+* @date - 18/04/2017
 */
 
 #ifndef GAMECONTROL_H
 #define GAMECONTROL_H
 
 #include "GameWorld.h"
-#include "Input.h"
 
 class GameControl
 {
@@ -55,31 +57,28 @@ class GameControl
 		void Draw();
 
 		/**
-		* @brief Calls pressKeys function in Input Engine
+		* @brief Calls CreateCam function in GameWorld Engine
 		*/
-		void KeyboardPress(unsigned char key, int xx, int yy);
+		void CreateCam();
 
 		/**
-		* @brief Calls releaseKeys function in Input Engine
+		* @brief Calls GetCam function in GameWorld Engine
+		* @param choice - Which camera Vec3 to return
+		* @return Vec3 - Chosen camera Vec3 data
 		*/
-		void KeyboardRelease(unsigned char key, int xx, int yy);
+		Vec3 GetCam(int choice);
 
 		/**
-		* @brief Calls moveMouse function in Input Engine
+		* @brief Calls GetCam function in GameWorld Engine
+		* @param choice - Which camera Vec3 to return
+		* @param vec - Vec3 data to copy from
 		*/
-		void MouseMovement(int x, int y);
-
-		/**
-		* @brief Calls pressMouseButton function in Input Engine
-		*/
-		void MouseButton(int button, int state, int x, int y);
+		void SetCam(int choice, Vec3 vec);
 
 	private:
 
 		/// GameWorld object
 		GameWorld gameWorld;
-		/// Input object
-		Input input;
 
 };
 
