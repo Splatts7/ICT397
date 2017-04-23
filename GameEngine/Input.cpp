@@ -89,15 +89,15 @@ void Input::pressKeys(unsigned char key, int xx, int yy)
 		// Switch between wireframe and full rendering
 		case 'k':
 		case 'K':
-			if (displayWireframe) 
+			if (!displayWireframe) 
 			{
 				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-				displayWireframe = false;
+				displayWireframe = true;
 			}
 			else 
 			{
 				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-				displayWireframe = true;
+				displayWireframe = false;
 			}
 			break;
 		// Show exit splash screen

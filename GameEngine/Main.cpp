@@ -12,8 +12,11 @@
 * Version 03 - Added keyInput, keyRelease, mouseMove, and mouseButton functions
 * Date - 14/04/2017
 *
-* @version 04 - Altered initialize function to set starting gluLookAt to data read from script
+* Version 04 - Altered initialize function to set starting gluLookAt to data read from script
 * Date - 18/04/2017
+*
+* Version 05 - Mouse cursor is now hidden while running
+* Date - 23/04/2017
 */
 
 #include <stdio.h>
@@ -112,8 +115,9 @@ void Initialize()
 	Vec3 look = gameControl.GetCam(2);
 	Vec3 up = gameControl.GetCam(3);
 
-	// Center cursor
+	// Center and hide cursor
 	glutWarpPointer(screenH/2, screenW/2);
+	glutSetCursor(GLUT_CURSOR_NONE); 
 
 	// Set view perspective
 	gluLookAt(pos.x, pos.y, pos.z,
