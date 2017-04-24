@@ -76,7 +76,6 @@ class GameControl
 		void SetCam(int choice, Vec3 vec);
 
 	private:
-
 		/// GameWorld object
 		GameWorld gameWorld;
 

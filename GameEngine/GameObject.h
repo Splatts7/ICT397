@@ -49,7 +49,6 @@ class GameObject
 	private:
 
 
-
 	protected:
 
 		/// Position of the object

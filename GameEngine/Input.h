@@ -15,10 +15,13 @@
 
 #ifndef INPUT_H
 #define INPUT_H
+#define GLEW_STATIC
+
 
 #include <stdlib.h>
 #include <cmath>
 #include <iostream>
+#include "gl/glew.h"
 #include "gl/glut.h"
 #include "lua.hpp"
 #include "GameControl.h"

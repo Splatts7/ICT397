@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>soil</id>
+    <version>1.16.0</version>
+    <title>Simple OpenGL Image Library</title>
+    <authors>www.lonesock.net, Sean Barrett</authors>
+    <owners>www.lonesock.net, Sean Barrett</owners>
+    <projectUrl>http://www.lonesock.net/soil.html</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SOIL is a tiny C library used primarily for uploading textures into OpenGL. It is based on stb_image version 1.16, the public domain code from Sean Barrett. I have extended it to load TGA and DDS files, and to perform common functions needed in loading OpenGL textures. SOIL can also be used to save and load images in a variety of formats (useful for loading height maps, non-OpenGL applications, etc.)</description>
+    <summary>SOIL is a tiny C library used primarily for uploading textures into OpenGL</summary>
+    <tags>native nativepackage soil opengl gl vs2015 v140 2015</tags>
+  </metadata>
+</package>

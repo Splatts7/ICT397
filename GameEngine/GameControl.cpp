@@ -6,7 +6,8 @@
 #include "GameControl.h"
 
 // Default constructor
-GameControl::GameControl(){};
+GameControl::GameControl(){
+};
 
 // De-constructor
 GameControl::~GameControl(){};

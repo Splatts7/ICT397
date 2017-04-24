@@ -12,4 +12,4 @@ upx=0.0
 upy=1.0
 upz=0.0
 rotspeed=1200.0
-movespeed=2.0
+movespeed=0.06
