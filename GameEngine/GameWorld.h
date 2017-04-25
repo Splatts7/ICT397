@@ -20,6 +20,8 @@
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
+#define GLEW_STATIC
+#include "gl\glew.h"
 #include "AudioEngine.h"
 //#include "Animation.h"
 #include "GraphicsEngine.h"

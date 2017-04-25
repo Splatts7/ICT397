@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>assimp.v140</id>
+    <version>3.2</version>
+    <title>Open Asset Import Library</title>
+    <authors>Alexander Gessler, Thomas Schulze, Kim Kulling, R.Schmidt, Matthias Gubisch, Mark Sibly, Jonathan Klein, Sebastian Hempel, Jonathan Pokrass, Andrew Galante, Andreas Nagel, Marius Schr�der, Christian Schubert, Tizian Wieland, John Connors, T. R., Andy Maloney, Zhao Lei, sueastside, Tobias Rittig, Brad Grantham, Robert Ramirez, Chris Maiwald, Stepan Hrbek, David Nadlinger, Dario Accornero, Martin Walser (Samhayne), Matthias Fauconneau, J�rgen P. Tjern�, drparallax, Carsten Fuchs, dbburgess, alfiereinre7, Roman Kharitonov, Ed Diana, rdb, Mick P, Rosen Diankov, Mark Page, IOhannes, gellule, Marcel Metz, Brian Miller, S�verin Lemaignan, albert-wang, Ya ping Jin, Jonne Nauha, Filip Wasil (Tieto Poland Sp. z o.o.), Richard Steffen</authors>
+    <owners>Alexander Gessler, Thomas Schulze, Kim Kulling, R.Schmidt, Matthias Gubisch, Mark Sibly, Jonathan Klein, Sebastian Hempel, Jonathan Pokrass, Andrew Galante, Andreas Nagel, Marius Schr�der, Christian Schubert, Tizian Wieland, John Connors, T. R., Andy Maloney, Zhao Lei, sueastside, Tobias Rittig, Brad Grantham, Robert Ramirez, Chris Maiwald, Stepan Hrbek, David Nadlinger, Dario Accornero, Martin Walser (Samhayne), Matthias Fauconneau, J�rgen P. Tjern�, drparallax, Carsten Fuchs, dbburgess, alfiereinre7, Roman Kharitonov, Ed Diana, rdb, Mick P, Rosen Diankov, Mark Page, IOhannes, gellule, Marcel Metz, Brian Miller, S�verin Lemaignan, albert-wang, Ya ping Jin, Jonne Nauha, Filip Wasil (Tieto Poland Sp. z o.o.), Richard Steffen</owners>
+    <licenseUrl>http://www.assimp.org/main_license.html</licenseUrl>
+    <projectUrl>http://www.assimp.org/index.html</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Open Asset Import Library (short name: Assimp) is a portable Open Source library to import various well-known 3D model formats in a uniform manner. The most recent version also knows how to export 3d files and is therefore suitable as a general-purpose 3D model converter. This is a NuGet package of Assimp built with Visual Studio 2015 Update 2.</description>
+    <summary>Open Asset Import Library (short name: Assimp) is a portable Open Source library to import various well-known 3D model formats in a uniform manner. The most recent version also knows how to export 3d files and is therefore suitable as a general-purpose 3D model converter. This is a NuGet package of Assimp built with Visual Studio 2015 Update 2.</summary>
+    <copyright>Copyright (c) 2006-2015, assimp team. All rights reserved.</copyright>
+    <tags>native nativepackage assimp model asset import vs2015 v140 2015</tags>
+    <dependencies>
+      <dependency id="assimp.v140.redist" version="3.2.0" />
+    </dependencies>
+  </metadata>
+</package>

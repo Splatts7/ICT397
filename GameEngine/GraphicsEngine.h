@@ -28,7 +28,6 @@ class GraphicsEngine
 
 	private:
 
-
 };
 
 #endif

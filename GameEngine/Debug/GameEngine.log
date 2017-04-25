@@ -1,17 +1,15 @@
-﻿Build started 19/04/2017 7:57:35 PM.
-     1>Project "C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
+﻿Build started 24/04/2017 12:16:48 PM.
+     1>Project "C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\Dependencies\Includes & DLLs\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GameControl.cpp GameWorld.cpp Input.cpp Main.cpp
-         GameWorld.cpp
-         Generating Code...
-     1>c:\users\new\documents\games_technology\year3_semester1\ict397\~my work\assignment1\gameengine\gameengine\gameworld.cpp(250): warning C4715: 'GameWorld::GetCam' : not all control paths return a value
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\packages\assimp.v140.3.2\build\native\../..//build/native/include/ /I"..\Dependencies\Includes & DLLs\include" /IC:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\packages\soil.1.16.0\build\native\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GameControl.cpp GameWorld.cpp Input.cpp Main.cpp
          Main.cpp
          Input.cpp
+         GameWorld.cpp
          GameControl.cpp
          Generating Code...
+     1>c:\users\ducku\onedrive\documents\ict397\ict397\gameengine\gameworld.cpp(242): warning C4715: 'GameWorld::GetCam' : not all control paths return a value
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib lua5.1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.lib" /MACHINE:X86 Debug\AudioEngine.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" /LIBPATH:C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\packages\soil.1.16.0\build\native\lib\Win32\Debug "C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\packages\assimp.v140.3.2\build\native\../..//build/native/lib/Win32\Debug\assimp-vc140-mtd.lib" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib lua5.1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib glew32s.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib soil.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\Debug\GameEngine.lib" /MACHINE:X86 Debug\AudioEngine.obj
          Debug\Camera.obj
          Debug\GameAssetFactory.obj
          Debug\GameControl.obj
@@ -20,11 +18,14 @@
          Debug\Input.obj
          Debug\Main.obj
          Debug\GameWorld.obj
+         Debug\Mesh.obj
+         Debug\Model.obj
          Debug\NPC.obj
+         Debug\Shader.obj
          Debug\Terrain.obj
-         GameEngine.vcxproj -> C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe
-     1>Done Building Project "C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
+         GameEngine.vcxproj -> C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\Debug\GameEngine.exe
+     1>Done Building Project "C:\Users\Ducku\OneDrive\Documents\ICT397\ICT397\GameEngine\GameEngine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.29
+Time Elapsed 00:00:04.81

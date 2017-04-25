@@ -6,7 +6,10 @@
 #include "GraphicsEngine.h"
 
 // Default constructor
-GraphicsEngine::GraphicsEngine(){};
+GraphicsEngine::GraphicsEngine()
+{
+
+};
 
 // De-constructor
 GraphicsEngine::~GraphicsEngine(){};
