@@ -75,6 +75,11 @@ class GameControl
 		*/
 		void SetCam(int choice, Vec3 vec);
 
+		/**
+		* @brief Initializes all game data before starting game
+		*/
+		void Prepare();
+
 	private:
 
 		/// GameWorld object

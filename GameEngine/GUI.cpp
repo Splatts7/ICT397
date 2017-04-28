@@ -21,6 +21,7 @@ GUI::~GUI()
 GLuint GUI::LoadTexture(const char * filename, int width, int height)
 {
     // Read in a .raw file
+	#pragma warning(suppress: 4996)
     file = fopen(filename, "rb");
     if (file == NULL) return 0;
     data = (unsigned char *)malloc(width * height * 3);

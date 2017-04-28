@@ -30,11 +30,9 @@ int GameControl::GetScreenH()
 }
 
 // Call the Draw function in the GameWorld Engine
-// Note - Will call Draw function once we get that far, Prepare function used for testing
 void GameControl::Draw()
 {
-	//gameWorld.Draw();
-	gameWorld.Prepare();
+	gameWorld.Draw();
 }
 
 // Call CreateCam function in GameWorld Engine
@@ -53,4 +51,10 @@ Vec3 GameControl::GetCam(int choice)
 void GameControl::SetCam(int choice, Vec3 vec)
 {
 	gameWorld.SetCam(choice, vec);
+}
+
+// Initialize all data before running game
+void GameControl::Prepare()
+{
+	gameWorld.Prepare();
 }

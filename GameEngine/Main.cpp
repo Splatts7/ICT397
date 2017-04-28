@@ -34,7 +34,7 @@ Input input;
 
 // Variables to hold screen width and height
 int screenW, screenH;
-float ratio;
+float ratioT;
 
 // Function used for calling Draw function from GameWorld Engine
 void Display();
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 	screenW = gameControl.GetScreenW();
 	screenH = gameControl.GetScreenH();
 
-	// Audio engine testing
+	// Audio engine testing (not added to Assignment 1, will add to Assignment 2)
 	//AudioEngine audio;
 	//audio.LoadMedia();
 	//audio.PlaySound();
@@ -107,7 +107,7 @@ void Display()
 void Initialize()
 {
 	// White background
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClearColor(0.3, 0.0, 0.0, 1.0);
 
 	// Create camera object
 	gameControl.CreateCam();
@@ -117,7 +117,7 @@ void Initialize()
 
 	// Center and hide cursor
 	glutWarpPointer(screenH/2, screenW/2);
-	glutSetCursor(GLUT_CURSOR_NONE); 
+	glutSetCursor(GLUT_CURSOR_NONE);
 
 	// Set view perspective
 	gluLookAt(pos.x, pos.y, pos.z,
@@ -125,6 +125,7 @@ void Initialize()
 		up.x, up.y, up.z);
 
 	// Other initializations
+	gameControl.Prepare();
 }
 
 // Reshape screen size when window size is altered
@@ -135,13 +136,13 @@ void Reshape(int w, int h)
 		h = 1;
 	screenW = w;
 	screenH = h;
-	ratio = 1.0f * w / h;
+	ratioT = 1.0f * w / h;
 
 	// Reset view matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, w, h);
-	gluPerspective(45,ratio,1,250000);
+	gluPerspective(45,ratioT,1,250000);
 	glMatrixMode(GL_MODELVIEW);
 }
 

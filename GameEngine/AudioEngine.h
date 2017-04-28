@@ -16,7 +16,7 @@
 #include "SDL2/SDL_mixer.h"
 #include <stdio.h>
 #include <string>
-#include <list>
+#include <vector>
 #include "lua.hpp"
 
 class AudioEngine

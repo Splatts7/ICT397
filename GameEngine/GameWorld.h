@@ -25,7 +25,7 @@
 #include "GraphicsEngine.h"
 //#include "AI.h"
 //#include "Input.h"
-//#include "Physics.h"
+//#include "PhysicsEngine.h"
 #include "Camera.h"
 #include "GameAssetFactory.h"
 #include "lua.hpp"
@@ -33,6 +33,7 @@
 class GameWorld
 {
 	private:
+
 		/// Number of NPCs
 		int numNpcs;
 
@@ -63,9 +64,6 @@ class GameWorld
 		/// Camera up vec
 		Vec3 up;
 
-		/// Lua state
-		lua_State* L;
-
 	protected:
 
 		/**
@@ -76,12 +74,11 @@ class GameWorld
 
 		/**
 		* @brief Called by public Draw function, renders the world
-		* @param camera - The camera object
 		*/
-		//void OnDraw(Camera *camera);
+		void OnDraw();
 
 		/**
-		* @brief 
+		* @brief Called by public Prepare function, initializes all data before starting game
 		*/
 		void OnPrepare();
 
@@ -140,9 +137,8 @@ class GameWorld
 
 		/**
 		* @brief Public Draw function that calls protected one
-		* @param camera - Camera object
 		*/
-		//void Draw(Camera *camera);
+		void Draw();
 
 		/**
 		* @brief Public Prepare function that calls protected one
@@ -217,10 +213,10 @@ class GameWorld
 		//Enemy *NPC;
 
 		/// The time the game started
-		float timeStart;
+		//float timeStart;
 
 		/// The time passed since game started
-		float timeElapsed;
+		//float timeElapsed;
 };
 
 #endif
