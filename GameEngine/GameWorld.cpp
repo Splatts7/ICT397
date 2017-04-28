@@ -4,18 +4,17 @@
 */
 
 #include "GameWorld.h"
-#include "Camera.h"
 #include "Input.h"
 //#include <iostream>
 
 // Default constructor
 GameWorld::GameWorld()
 {
+	// Initialize game variables
 	numNpcs = 0;
 	screenWidth = 100;
 	screenHeight = 100;
 	gameDone = false;
-	// Other initialisations
 
 	// Initialize camera variables
 	cam = new Camera();
@@ -24,8 +23,7 @@ GameWorld::GameWorld()
 	up = Vec3();
 
 	// Lua initializations (might need to put this in every function that reads a script instead of having only one state?)
-	L = lua_open();
-	luaL_openlibs(L);
+	
 }
 
 // Non-default constructor
@@ -75,13 +73,24 @@ void GameWorld::Animate(float deltaTime)
 void GameWorld::OnAnimate(float deltaTime){}
 
 // Call protected Draw function
-//void Draw(Camera *camera)
-//{
-//	OnDraw(camera);
-//}
+void GameWorld::Draw()
+{
+	OnDraw();
+}
 
 // Render the world
-//void GameWorld::OnDraw(Camera *camera){}
+void GameWorld::OnDraw()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// Get keyboard and mouse input
+	extern Input input;
+	input.MoveCamera();
+
+	pos = graphicsEngine.Draw(cam->Get(1));
+
+	cam->Set(1, pos);
+}
 
 // Call protected Prepare function
 void GameWorld::Prepare()
@@ -89,74 +98,23 @@ void GameWorld::Prepare()
 	OnPrepare();
 }
 
-//
-// Note - currently used for testing purposes
+// Initialize all game data
 void GameWorld::OnPrepare()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	extern Input input;
-	input.MoveCamera();
-
-    //Front wall
-    glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.5, 0.0);   //dark green
-    glVertex3f(10.0, 10.0, -100.0);   //TL
-    glVertex3f(10.0, -10.0, -100.0);   //BL
-    glVertex3f(-10.0, -10.0, -100.0);   //BR
-    glVertex3f(-10.0, 10.0, -100.0);   //TR
-    glEnd();
-
-    ////Back wall
-    //glBegin(GL_POLYGON);
-    //glColor3f(1.0, 0.0, 0.0);   //red
-    //glVertex3f(-20.0, 30.0, -30.0);    //TL
-    //glVertex3f(20.0, 30.0, -30.0);   //TR
-    //glVertex3f(20.0, 0.0, -30.0);    //BR
-    //glVertex3f(-20.0, 0.0, -30.0);     //BL
-    //glEnd();
-
-    ////left wall
-    //glBegin(GL_POLYGON);
-    //glColor3f(0.0, 0.0, 1.0);   //blue
-    //glVertex3f(-20.0, 0.0, 0.0);        //BR
-    //glVertex3f(-20.0, 30.0, 0.0);       //TR
-    //glVertex3f(-20.0, 30.0, -30.0);    //TL
-    //glVertex3f(-20.0, 0.0, -30.0);     //BL
-    //glEnd();
-
-    ////right wall
-    //glBegin(GL_POLYGON);
-    //glColor3f(0.0, 1.0, 1.0);   //cyan
-    //glVertex3f(20.0, 30.0, 0.0);      //TL
-    //glVertex3f(20.0, 0.0, 0.0);       //BL
-    //glVertex3f(20.0, 0.0, -30.0);    //BR
-    //glVertex3f(20.0, 30.0, -30.0);   //TR
-    //glEnd();
-
-	glutSwapBuffers();
-    glFlush();
+	graphicsEngine.Prepare(cam->Get(1));
 }
 
 // Fade the screen in/out
 void GameWorld::FadeScreen(){}
 
 // Set the screen size
-// Note - Not sure if able to have one instance of lua state for each script, or if each script requires its own state
-//		  Therefore, commented code may still be required here. Also not too sure how to go about error checking as
-//		  adding in #include <iostream> causes errors
+// Note - Not too sure how to go about error checking as adding in #include <iostream> causes errors
 void GameWorld::SetScreen()
 {
-	// Load script
-	//lua_State* L = lua_open();
-	/*if (L == NULL)
-	{
-		std::cout << "Error Initializing lua.." << std::endl;
-		return -1;
-	}*/
-
-	// Load standard lua library functions
-	//luaL_openlibs(L);
+	// Make lua state and open libs
+	lua_State* L = lua_open();
+	luaL_openlibs(L);
+	
 	// Load and run script
 	if (luaL_dofile(L, "Scripts/GameWindow.lua"))
 	{
@@ -176,18 +134,21 @@ void GameWorld::SetScreen()
 	screenWidth = lua_tonumber(L,1);
 	screenHeight = lua_tonumber(L,2);
 	
-	// Close lua state? Or can it stay open until program ends/ all scripts read?
+	// Close lua state
+	lua_close(L);
 }
 
 // Creates the game camera object
-// Note - Not sure if able to have one instance of lua state for each script, or if each script requires its own state
-//		  Therefore, commented code may still be required here. Also not too sure how to go about error checking as
-//		  adding in #include <iostream> causes errors
+// Note - Not too sure how to go about error checking as adding in #include <iostream> causes errors
 void GameWorld::CreateCam()
 {
 	// Make camera object
 	cam = GAF.Create("CAMERA");
 	Vec3 temp;
+
+	// Make lua state and open libs
+	lua_State* L = lua_open();
+	luaL_openlibs(L);
 
 	// Read in starting camera values from script
 	if (luaL_dofile(L, "Scripts/Camera.lua"))
@@ -227,7 +188,8 @@ void GameWorld::CreateCam()
 	temp.z = lua_tonumber(L,9);
 	cam->Set(3, temp);
 
-	// Close lua state? Or can it stay open until program ends/ all scripts read?
+	// Close lua state
+	lua_close(L);
 }
 
 // Returns the Vec3 values for the camera object, depending on choice input

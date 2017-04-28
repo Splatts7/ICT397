@@ -1,30 +1,77 @@
-﻿Build started 19/04/2017 7:57:35 PM.
+﻿Build started 28/04/2017 2:10:30 PM.
      1>Project "C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\GameEngine\GameEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\Dependencies\Includes & DLLs\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GameControl.cpp GameWorld.cpp Input.cpp Main.cpp
-         GameWorld.cpp
-         Generating Code...
-     1>c:\users\new\documents\games_technology\year3_semester1\ict397\~my work\assignment1\gameengine\gameengine\gameworld.cpp(250): warning C4715: 'GameWorld::GetCam' : not all control paths return a value
-         Compiling...
-         Main.cpp
-         Input.cpp
-         GameControl.cpp
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\Dependencies\Includes & DLLs\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GUI.cpp
+         GUI.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib lua5.1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.lib" /MACHINE:X86 Debug\AudioEngine.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\Dependencies\Includes & DLLs\lib" BulletSoftBody_Debug.lib BulletDynamics_Debug.lib BulletCollision_Debug.lib LinearMath_Debug.lib SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib lua5.1.lib reactphysics3d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.lib" /MACHINE:X86 Debug\AI.obj
+         Debug\Animation.obj
+         Debug\AudioEngine.obj
          Debug\Camera.obj
          Debug\GameAssetFactory.obj
          Debug\GameControl.obj
          Debug\GameObject.obj
          Debug\GraphicsEngine.obj
+         Debug\GUI.obj
          Debug\Input.obj
          Debug\Main.obj
          Debug\GameWorld.obj
          Debug\NPC.obj
+         Debug\PhysicsEngine.obj
          Debug\Terrain.obj
+     1>reactphysics3d.lib(Body.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CollisionBody.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(RigidBody.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(BroadPhaseAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(DynamicAABBTree.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(DefaultCollisionDispatch.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(EdgeEPA.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(EPAAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(TriangleEPA.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(TrianglesStore.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Simplex.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(GJKAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(NarrowPhaseAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(SphereVsSphereAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ConcaveVsConvexAlgorithm.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(AABB.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ConvexShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(BoxShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CapsuleShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CollisionShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ConeShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CylinderShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(SphereShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(TriangleShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(RaycastInfo.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ProxyShape.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CollisionDetection.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ContactManifold.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ContactManifoldSet.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(BallAndSocketJoint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ContactPoint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(FixedJoint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(HingeJoint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Joint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(SliderJoint.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(CollisionWorld.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ConstraintSolver.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(ContactSolver.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(DynamicsWorld.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Island.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Material.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(OverlappingPair.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(mathematics_functions.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Matrix2x2.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Matrix3x3.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Quaternion.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Transform.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Vector2.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(Vector3.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>reactphysics3d.lib(MemoryAllocator.obj) : warning LNK4204: 'C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\vc110.pdb' is missing debugging information for referencing module; linking object as if no debug info
          GameEngine.vcxproj -> C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\Debug\GameEngine.exe
      1>Done Building Project "C:\Users\New\Documents\Games_Technology\Year3_Semester1\ICT397\~My Work\Assignment1\GameEngine\GameEngine\GameEngine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.29
+Time Elapsed 00:00:01.72
