@@ -74,16 +74,17 @@ class Input
 		*/
 		void MoveCamera();
 
-	private:
-
 		/// Flag to display game manual
 		bool displayManual;
 
-		/// Flag to display wire frames
-		bool displayWireframe;
-
 		/// Flag to display exit splash screen
 		bool displayExit;
+
+	private:
+
+
+		/// Flag to display wire frames
+		bool displayWireframe;
 
 		/// Camera position
 		Vec3 pos;

@@ -81,10 +81,14 @@ void Input::pressKeys(unsigned char key, int xx, int yy)
 		// Display game manual
 		case 'm':
 		case 'M':
-			if (displayManual) 
+			if (displayManual)
+			{
 				displayManual = false;
-			else 
+			}
+			else
+			{
 				displayManual = true;
+			}
 			break;
 		// Switch between wireframe and full rendering
 		case 'k':

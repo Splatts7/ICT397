@@ -1,6 +1,6 @@
 /**
-* @class GUI
-* @brief GUI engine to handle GUI elements
+* @class Texture
+* @brief Texture engine for loading textures
 * @author Jonathan Sands
 * @version 01 - Started
 * @date 23/04/2017
@@ -10,22 +10,22 @@
 #include "gl/glut.h"
 #include <fstream>
 
-#ifndef GUI_H
-#define GUI_H
+#ifndef TEXTURE_H
+#define TEXTURE_H
 
-class GUI
+class Texture
 {
 	public:
 
 		/**
 		* @brief Defualt constructor
 		*/
-		GUI();
+		Texture::Texture();
 
 		/**
 		* @brief Deconstructor
 		*/
-		~GUI();
+		Texture::~Texture();
 
 		/**
 		* @brief Loads a texture into memory
@@ -33,13 +33,13 @@ class GUI
 		* @param width - Width of texture
 		* @param height - Height of texture
 		*/
-		GLuint LoadTexture(const char * filename, int width, int height);
+		GLuint Texture::LoadTexture(const char * filename, int width, int height);
 
 		/**
 		* @brief Unloads a texture from memory
 		* @param texture - Texture object
 		*/
-		void FreeTexture(GLuint texture);
+		void Texture::FreeTexture(GLuint texture);
 
 	private:
 
