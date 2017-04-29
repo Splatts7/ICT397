@@ -3,28 +3,30 @@
 * Author - Jonathan Sands
 */
 
-#include "GUI.h"
+#include "Texture.h"
 
 // Default constructor
-GUI::GUI()
+Texture::Texture()
 {
 
 }
 
 // Deconstructor
-GUI::~GUI()
+Texture::~Texture()
 {
 	
 }
 
 // Load in a texture into memory
-GLuint GUI::LoadTexture(const char * filename, int width, int height)
+GLuint Texture::LoadTexture(const char * filename, int width, int height)
 {
     // Read in a .raw file
-	#pragma warning(suppress: 4996)
     file = fopen(filename, "rb");
-    if (file == NULL) return 0;
-    data = (unsigned char *)malloc(width * height * 3);
+    if (file == NULL) {
+		printf("File %c not found!\n", filename);
+		return 0;
+	}
+    data = (unsigned char*)malloc(sizeof(unsigned char) * width * height * 3);
     fread(data, width * height * 3, 1, file);
     fclose(file);
 
@@ -63,7 +65,7 @@ GLuint GUI::LoadTexture(const char * filename, int width, int height)
 }
 
 // Unload a texture from memory
-void GUI::FreeTexture(GLuint texture)
+void Texture::FreeTexture(GLuint texture)
 {
   glDeleteTextures(1, &texture); 
 }

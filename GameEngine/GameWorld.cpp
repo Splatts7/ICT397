@@ -4,17 +4,18 @@
 */
 
 #include "GameWorld.h"
+#include "Camera.h"
 #include "Input.h"
 //#include <iostream>
 
 // Default constructor
 GameWorld::GameWorld()
 {
-	// Initialize game variables
 	numNpcs = 0;
 	screenWidth = 100;
 	screenHeight = 100;
 	gameDone = false;
+	// Other initialisations
 
 	// Initialize camera variables
 	cam = new Camera();
@@ -23,7 +24,8 @@ GameWorld::GameWorld()
 	up = Vec3();
 
 	// Lua initializations (might need to put this in every function that reads a script instead of having only one state?)
-	
+	L = lua_open();
+	luaL_openlibs(L);
 }
 
 // Non-default constructor
@@ -52,7 +54,10 @@ int GameWorld::GetScreenH()
 }
 
 // Load the world
-void GameWorld::LoadWorld(){};
+void GameWorld::LoadWorld()
+{
+
+};
 
 // Unload world
 void GameWorld::UnloadWorld(){};
@@ -73,24 +78,71 @@ void GameWorld::Animate(float deltaTime)
 void GameWorld::OnAnimate(float deltaTime){}
 
 // Call protected Draw function
-void GameWorld::Draw()
-{
-	OnDraw();
-}
+//void Draw(Camera *camera)
+//{
+//	OnDraw(camera);
+//}
 
 // Render the world
-void GameWorld::OnDraw()
+//void GameWorld::OnDraw(Camera *camera){}
+
+// Load the GUI
+void GameWorld::DisplayGUI()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// Get keyboard and mouse input
 	extern Input input;
-	input.MoveCamera();
-
-	pos = graphicsEngine.Draw(cam->Get(1));
-
-	cam->Set(1, pos);
-}
+	GLuint texManual, texExit;
+	texManual = guiObject.LoadTexture("Textures/Manual.raw", 600, 600);
+	Vec3 temp = look;
+	if (input.displayManual){
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		glOrtho(0.0, glutGet(GLUT_WINDOW_WIDTH), 0.0, glutGet(GLUT_WINDOW_HEIGHT), -1.0, 1.0);
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+		glDisable(GL_LIGHTING);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, texManual);
+		glColor3f(1.0, 1.0, 1.0);
+		glBegin (GL_QUADS);
+			glTexCoord2d(0.0,1.0); glVertex3f(200.0,0.0,0.0);
+			glTexCoord2d(1.0,1.0); glVertex3f(800.0,0.0,0.0);
+			glTexCoord2d(1.0,0.0); glVertex3f(800.0,600.0,0.0);
+			glTexCoord2d(0.0,0.0); glVertex3f(200.0,600.0,0.0);
+		glEnd();
+		glDisable(GL_TEXTURE_2D);
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	}
+	texExit = guiObject.LoadTexture("Textures/Exit.raw", 600, 600);
+	if (input.displayExit){
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		glOrtho(0.0, glutGet(GLUT_WINDOW_WIDTH), 0.0, glutGet(GLUT_WINDOW_HEIGHT), -1.0, 1.0);
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+		glDisable(GL_LIGHTING);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, texExit);
+		glColor3f(1.0, 1.0, 1.0);
+		glBegin (GL_QUADS);
+			glTexCoord2d(0.0,1.0); glVertex3f(200.0,0.0,0.0);
+			glTexCoord2d(1.0,1.0); glVertex3f(800.0,0.0,0.0);
+			glTexCoord2d(1.0,0.0); glVertex3f(800.0,600.0,0.0);
+			glTexCoord2d(0.0,0.0); glVertex3f(200.0,600.0,0.0);
+		glEnd();
+		glDisable(GL_TEXTURE_2D);
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	}
+};
 
 // Call protected Prepare function
 void GameWorld::Prepare()
@@ -98,23 +150,76 @@ void GameWorld::Prepare()
 	OnPrepare();
 }
 
-// Initialize all game data
+//
+// Note - currently used for testing purposes
 void GameWorld::OnPrepare()
 {
-	graphicsEngine.Prepare(cam->Get(1));
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	extern Input input;
+	input.MoveCamera();
+
+    //Front wall
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 0.5, 0.0);   //dark green
+    glVertex3f(10.0, 10.0, -100.0);   //TL
+    glVertex3f(10.0, -10.0, -100.0);   //BL
+    glVertex3f(-10.0, -10.0, -100.0);   //BR
+    glVertex3f(-10.0, 10.0, -100.0);   //TR
+    glEnd();
+
+    ////Back wall
+    //glBegin(GL_POLYGON);
+    //glColor3f(1.0, 0.0, 0.0);   //red
+    //glVertex3f(-20.0, 30.0, -30.0);    //TL
+    //glVertex3f(20.0, 30.0, -30.0);   //TR
+    //glVertex3f(20.0, 0.0, -30.0);    //BR
+    //glVertex3f(-20.0, 0.0, -30.0);     //BL
+    //glEnd();
+
+    ////left wall
+    //glBegin(GL_POLYGON);
+    //glColor3f(0.0, 0.0, 1.0);   //blue
+    //glVertex3f(-20.0, 0.0, 0.0);        //BR
+    //glVertex3f(-20.0, 30.0, 0.0);       //TR
+    //glVertex3f(-20.0, 30.0, -30.0);    //TL
+    //glVertex3f(-20.0, 0.0, -30.0);     //BL
+    //glEnd();
+
+    ////right wall
+    //glBegin(GL_POLYGON);
+    //glColor3f(0.0, 1.0, 1.0);   //cyan
+    //glVertex3f(20.0, 30.0, 0.0);      //TL
+    //glVertex3f(20.0, 0.0, 0.0);       //BL
+    //glVertex3f(20.0, 0.0, -30.0);    //BR
+    //glVertex3f(20.0, 30.0, -30.0);   //TR
+    //glEnd();
+
+	DisplayGUI();
+
+	glutSwapBuffers();
+    glFlush();
 }
 
 // Fade the screen in/out
 void GameWorld::FadeScreen(){}
 
 // Set the screen size
-// Note - Not too sure how to go about error checking as adding in #include <iostream> causes errors
+// Note - Not sure if able to have one instance of lua state for each script, or if each script requires its own state
+//		  Therefore, commented code may still be required here. Also not too sure how to go about error checking as
+//		  adding in #include <iostream> causes errors
 void GameWorld::SetScreen()
 {
-	// Make lua state and open libs
-	lua_State* L = lua_open();
-	luaL_openlibs(L);
-	
+	// Load script
+	//lua_State* L = lua_open();
+	/*if (L == NULL)
+	{
+		std::cout << "Error Initializing lua.." << std::endl;
+		return -1;
+	}*/
+
+	// Load standard lua library functions
+	//luaL_openlibs(L);
 	// Load and run script
 	if (luaL_dofile(L, "Scripts/GameWindow.lua"))
 	{
@@ -134,21 +239,18 @@ void GameWorld::SetScreen()
 	screenWidth = lua_tonumber(L,1);
 	screenHeight = lua_tonumber(L,2);
 	
-	// Close lua state
-	lua_close(L);
+	// Close lua state? Or can it stay open until program ends/ all scripts read?
 }
 
 // Creates the game camera object
-// Note - Not too sure how to go about error checking as adding in #include <iostream> causes errors
+// Note - Not sure if able to have one instance of lua state for each script, or if each script requires its own state
+//		  Therefore, commented code may still be required here. Also not too sure how to go about error checking as
+//		  adding in #include <iostream> causes errors
 void GameWorld::CreateCam()
 {
 	// Make camera object
 	cam = GAF.Create("CAMERA");
 	Vec3 temp;
-
-	// Make lua state and open libs
-	lua_State* L = lua_open();
-	luaL_openlibs(L);
 
 	// Read in starting camera values from script
 	if (luaL_dofile(L, "Scripts/Camera.lua"))
@@ -188,8 +290,7 @@ void GameWorld::CreateCam()
 	temp.z = lua_tonumber(L,9);
 	cam->Set(3, temp);
 
-	// Close lua state
-	lua_close(L);
+	// Close lua state? Or can it stay open until program ends/ all scripts read?
 }
 
 // Returns the Vec3 values for the camera object, depending on choice input
