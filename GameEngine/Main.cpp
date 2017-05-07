@@ -69,9 +69,9 @@ int main(int argc, char** argv)
 	screenH = gameControl.GetScreenH();
 
 	// Audio engine testing (not added to Assignment 1, will add to Assignment 2)
-	//AudioEngine audio;
-	//audio.LoadMedia();
-	//audio.PlaySound();
+	/*AudioEngine audio;
+	audio.LoadMedia();
+	audio.PlaySounds();*/
 
 	// Create game window, initialize all objects/variables, and enter main game loop
 	glutInit(&argc, argv);
