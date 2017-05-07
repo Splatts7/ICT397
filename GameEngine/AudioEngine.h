@@ -47,7 +47,7 @@ class AudioEngine
 		/**
 		* @brief Plays audio
 		*/
-		void PlaySound();
+		void PlaySounds();
 
 
 	private:

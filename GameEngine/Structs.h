@@ -12,25 +12,6 @@
 //#include <math.h>
 //#include <iostream>
 #include <vector>
-#include <string>
-#define GLEW_STATIC
-#include "gl\glew.h"
-#include "gl\glut.h"
-#include "glm\glm.hpp"
-#include <assimp/scene.h>
-
-struct Vertex
-{
-	glm::vec3 Position;
-	glm::vec3 Normal;
-	glm::vec2 TexCoords;
-};
-
-struct Texture{
-	GLuint id;
-	std::string type;
-	aiString path;
-};
 
 struct Vec3
 {

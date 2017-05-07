@@ -146,7 +146,7 @@ void AudioEngine::UnloadMedia()
 }
 
 // Play a sound
-void AudioEngine::PlaySound()
+void AudioEngine::PlaySounds()
 {
 	
 	Mix_Volume(-1, 20);

@@ -1,7 +1,7 @@
 /**
 * @class GameWorld
 * @brief Game World Engine
-* @author Jack Matters
+* @author Jack Matters, Jonathan Sands
 * @version 01 - Started, layout taken from lecture slides
 * @date 31/03/2017
 *
@@ -25,7 +25,7 @@
 #include "GraphicsEngine.h"
 //#include "AI.h"
 //#include "Input.h"
-//#include "Physics.h"
+//#include "PhysicsEngine.h"
 #include "Camera.h"
 #include "GameAssetFactory.h"
 #include "Texture.h"
@@ -34,6 +34,7 @@
 class GameWorld
 {
 	private:
+
 		/// Number of NPCs
 		int numNpcs;
 
@@ -64,9 +65,6 @@ class GameWorld
 		/// Camera up vec
 		Vec3 up;
 
-		/// Lua state
-		lua_State* L;
-
 		/// Texture object for GUI elements
 		Texture guiObject;
 
@@ -80,12 +78,11 @@ class GameWorld
 
 		/**
 		* @brief Called by public Draw function, renders the world
-		* @param camera - The camera object
 		*/
-		//void OnDraw(Camera *camera);
+		void OnDraw();
 
 		/**
-		* @brief 
+		* @brief Called by public Prepare function, initializes all data before starting game
 		*/
 		void OnPrepare();
 
@@ -144,9 +141,8 @@ class GameWorld
 
 		/**
 		* @brief Public Draw function that calls protected one
-		* @param camera - Camera object
 		*/
-		//void Draw(Camera *camera);
+		void Draw();
 
 		/**
 		* @brief Initialize GUI, load all splash screens
@@ -226,10 +222,10 @@ class GameWorld
 		//Enemy *NPC;
 
 		/// The time the game started
-		float timeStart;
+		//float timeStart;
 
 		/// The time passed since game started
-		float timeElapsed;
+		//float timeElapsed;
 };
 
 #endif

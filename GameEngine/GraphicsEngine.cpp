@@ -89,8 +89,8 @@ Vec3 GraphicsEngine::OnDraw(Vec3 cam)
 		}*/
 	}
 
-	glutSwapBuffers();
-	glFlush();
+	//glutSwapBuffers();
+	//glFlush();
 
 	return cam;
 }
